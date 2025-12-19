@@ -1,1 +1,96 @@
-https://www.overleaf.com/read/vwfqtfmksfvc#8b5af2
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+void printLine() {
+    cout << "--------------------------------------------\n";
+}
+
+int main() {
+    // Título
+    printLine();
+    cout << "REDE DE PETRI APLICADA À ENGENHARIA CIVIL\n";
+    cout << "Projeto com Robô Otto Ninja\n";
+    printLine();
+
+    cout << "Autores:\n";
+    cout << "Amanda Lemos\n";
+    cout << "Julia Nunes\n";
+    cout << "Luana Bastos\n";
+    cout << "Maria Luiza Cunha\n\n";
+
+    cout << "Professor: Prof. Dr. Robson Marinho\n";
+    cout << "Universidade do Estado da Bahia (UNEB)\n";
+    cout << "Salvador - BA, Novembro de 2025\n\n";
+
+    // Introdução
+    printLine();
+    cout << "INTRODUÇÃO\n";
+    printLine();
+    cout << "Este projeto teve como objetivo adaptar o robô Otto Ninja para aplicações\n";
+    cout << "na Engenharia Civil, simulando tarefas típicas de um canteiro de obras.\n";
+    cout << "Foram realizadas adaptações físicas e computacionais para aumentar\n";
+    cout << "a eficiência e funcionalidade do robô.\n\n";
+
+    cout << "O robô foi modificado com rodas para maior mobilidade e uma escavadeira\n";
+    cout << "frontal, permitindo coleta, transporte de materiais e nivelamento do solo.\n\n";
+
+    // Cenário
+    printLine();
+    cout << "CENÁRIO DO CANTEIRO DE OBRAS\n";
+    printLine();
+    vector<string> pontos = {
+        "Ponto A: Torre A em construção",
+        "Ponto B: Torre B em construção",
+        "Ponto C: Almoxarifado/Galpão",
+        "Ponto D: Caixa de entulho"
+    };
+
+    for (const string& p : pontos) {
+        cout << "- " << p << "\n";
+    }
+    cout << "\n";
+
+    cout << "Funções principais do robô:\n";
+    cout << "- Coletar materiais e resíduos\n";
+    cout << "- Transportar materiais\n";
+    cout << "- Nivelar o terreno\n\n";
+
+    // Modelagem
+    printLine();
+    cout << "MODELAGEM E SIMULAÇÃO\n";
+    printLine();
+    cout << "A estrutura do robô foi modelada no Fusion 360, permitindo melhor\n";
+    cout << "visualização e adaptação mecânica.\n\n";
+
+    cout << "O sistema foi representado por Redes de Petri Lugar/Transição no HPSim,\n";
+    cout << "possibilitando análise de estados, transições e fluxos de tarefas.\n\n";
+
+    cout << "Posteriormente, a Rede de Petri Colorida foi implementada no CPN IDE,\n";
+    cout << "permitindo simulações mais complexas com tokens coloridos e análise\n";
+    cout << "de gargalos e dependência de recursos.\n\n";
+
+    // Fluxograma
+    printLine();
+    cout << "FLUXOGRAMA DO SISTEMA\n";
+    printLine();
+    cout << "O fluxograma descreve o ciclo operacional do robô, incluindo\n";
+    cout << "verificação de tarefas, deslocamento, coleta, transporte e descarte.\n\n";
+
+    // Referências
+    printLine();
+    cout << "REFERÊNCIAS\n";
+    printLine();
+    cout << "1. Autodesk Fusion 360. Software de Modelagem 3D.\n";
+    cout << "2. Silva, J. P.; Almeida, R. Introdução à Robótica e Prototipagem Digital.\n";
+    cout << "3. Murata, T. Petri Nets: Properties, Analysis and Applications. IEEE, 1989.\n\n";
+
+    // Encerramento
+    printLine();
+    cout << "MUITO OBRIGADA PELA ATENÇÃO!\n";
+    printLine();
+
+    return 0;
+}
