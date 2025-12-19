@@ -1,0 +1,133 @@
+#include <iostream>
+using namespace std;
+
+/* =========================
+   LUGARES (PLACES)
+   ========================= */
+
+// Todos os lugares usam token UNIT → int
+int VERIFICACAO_SISTEMA = 1;
+int NIVEL_BATERIA_OK = 1;
+int BATERIA_FRACA = 0;
+int CIMENTO = 1;
+int ENTULHO = 0;
+int TERRENO = 1;
+
+/* =========================
+   FUNÇÕES DE DISPARO
+   ========================= */
+
+// VERIFICAR NÍVEL DE BATERIA
+bool verificarNivelBateria() {
+    if (VERIFICACAO_SISTEMA >= 1) {
+        VERIFICACAO_SISTEMA--;
+        if (NIVEL_BATERIA_OK)
+            NIVEL_BATERIA_OK++;
+        else
+            BATERIA_FRACA++;
+        cout << "Transição: VERIFICAR NIVEL DE BATERIA\n";
+        return true;
+    }
+    return false;
+}
+
+// CARREGAR BATERIA
+bool carregarBateria() {
+    if (BATERIA_FRACA >= 1) {
+        BATERIA_FRACA--;
+        NIVEL_BATERIA_OK++;
+        cout << "Transição: CARREGAR BATERIA\n";
+        return true;
+    }
+    return false;
+}
+
+// IDENTIFICAR DEMANDAS
+bool identificarDemandas() {
+    if (NIVEL_BATERIA_OK >= 1) {
+        NIVEL_BATERIA_OK--;
+        cout << "Transição: IDENTIFICAR DEMANDAS\n";
+        return true;
+    }
+    return false;
+}
+
+// RECEBER CIMENTO
+bool receberCimento() {
+    if (NIVEL_BATERIA_OK >= 1) {
+        NIVEL_BATERIA_OK--;
+        CIMENTO++;
+        cout << "Transição: RECEBER CIMENTO\n";
+        return true;
+    }
+    return false;
+}
+
+// TRANSPORTAR CIMENTO
+bool transportarCimento() {
+    if (CIMENTO >= 1 && TERRENO >= 1) {
+        CIMENTO--;
+        cout << "Transição: TRANSPORTAR CIMENTO\n";
+        return true;
+    }
+    return false;
+}
+
+// RECEBER ENTULHO
+bool receberEntulho() {
+    if (TERRENO >= 1) {
+        TERRENO--;
+        ENTULHO++;
+        cout << "Transição: RECEBER ENTULHO\n";
+        return true;
+    }
+    return false;
+}
+
+// DESCARREGAR ENTULHO
+bool descarregarEntulho() {
+    if (ENTULHO >= 1) {
+        ENTULHO--;
+        cout << "Transição: DESCARREGAR ENTULHO\n";
+        return true;
+    }
+    return false;
+}
+
+/* =========================
+   SIMULAÇÃO
+   ========================= */
+
+void printEstado() {
+    cout << "\n--- ESTADO ATUAL ---\n";
+    cout << "VERIFICACAO_SISTEMA: " << VERIFICACAO_SISTEMA << endl;
+    cout << "NIVEL_BATERIA_OK: " << NIVEL_BATERIA_OK << endl;
+    cout << "BATERIA_FRACA: " << BATERIA_FRACA << endl;
+    cout << "CIMENTO: " << CIMENTO << endl;
+    cout << "ENTULHO: " << ENTULHO << endl;
+    cout << "TERRENO: " << TERRENO << endl;
+}
+
+int main() {
+
+    cout << "=== SIMULACAO DA REDE DE PETRI (CPN → C++) ===\n";
+
+    bool fired;
+    do {
+        fired = false;
+
+        fired |= verificarNivelBateria();
+        fired |= carregarBateria();
+        fired |= identificarDemandas();
+        fired |= receberCimento();
+        fired |= transportarCimento();
+        fired |= receberEntulho();
+        fired |= descarregarEntulho();
+
+        printEstado();
+
+    } while (fired);
+
+    cout << "\nSimulação finalizada.\n";
+    return 0;
+}
