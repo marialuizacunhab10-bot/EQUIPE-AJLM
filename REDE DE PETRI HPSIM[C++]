@@ -1,0 +1,187 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+// ========================
+// ESTRUTURAS DA REDE
+// ========================
+struct Place {
+    std::string name;
+    int tokens;
+};
+
+struct Transition {
+    std::string name;
+    std::vector<Place*> input;
+    std::vector<Place*> output;
+
+    bool enabled() {
+        for (auto p : input)
+            if (p->tokens <= 0)
+                return false;
+        return true;
+    }
+
+    void fire() {
+        if (!enabled()) return;
+        for (auto p : input) p->tokens--;
+        for (auto p : output) p->tokens++;
+        std::cout << "Disparo: " << name << std::endl;
+    }
+};
+
+// ========================
+// LUGARES (PLACES)
+// ========================
+
+// Verificação do sistema
+Place P14{"INICIO",1}, P15{"NIVEL_BATERIA",0}, P16{"BATERIA_BAIXA",0};
+Place P17{"BATERIA_OK",1}, P18{"BATERIA_RECARREGADA",0};
+
+// Locais demandados
+Place P19{"TERRENO_A",0}, P20{"TERRENO_B",0};
+
+// Função 1 – Carregar cimento
+Place P21{"CIMENTO_ALMOX",1}, P22{"PEGAR_CIMENTO",0}, P23{"ROBO_ALMOX",0};
+Place P24{"RETRO_ABAIX",0}, P25{"CIMENTO_CARREGADO",0};
+Place P26{"RETRO_LEV",0}, P27{"CIMENTO_NO_ROBO",0};
+Place P28{"TRANSPORTAR_CIMENTO",0};
+
+// Posicionamento / descarga
+Place P29{"ROBO_POSICIONADO",0}, P30{"RETRO_ABAIX",0};
+Place P31{"CIMENTO_DESC",0}, P32{"RETRO_LEV",0};
+Place P33{"ROBO_LIVRE",1};
+
+// Função 2 – Nivelar terreno
+Place P40{"INICIO_NIVEL",0}, P41{"RETRO_ABAIX",0};
+Place P42{"RETRO_ABAIX2",0}, P43{"ROBO_FRENTE",0};
+Place P44{"ROBO_TRAS",0}, P45{"NIVEL_CONC",0};
+Place P46{"RETRO_LEV2",0};
+
+// Função 3 – Entulho
+Place P47{"RETRO_ABAIX_E",0}, P48{"ROBO_FRENTE_E",0};
+Place P49{"RETRO_LEV_E",0}, P50{"ENTULHO_ROBO",0};
+Place P51{"DESCARREGAR",0}, P52{"DESC_EM_D",0};
+Place P53{"CAIXA_ENTULHO",0}, P54{"CAIXA_CHEIA",0};
+Place P55{"ROBO_ESPERA",0}, P56{"CAIXA_VAZIA",1};
+Place P57{"RETRO_ABAIX_E2",0}, P58{"ENTULHO_DESC",0};
+Place P59{"FIM",0};
+
+// ========================
+// TRANSIÇÕES (TRANSITIONS)
+// ========================
+
+// Verificação
+Transition T13{"T13_INICIO"};
+Transition T14{"T14_BAT_BAIXA"};
+Transition T15{"T15_BAT_OK"};
+Transition T16{"T16_RECARREGA"};
+Transition T17{"T17_OK"};
+
+// Função 1
+Transition T21{"T21_CARREGAR"};
+Transition T22{"T22_DESCER_RETRO"};
+Transition T23{"T23_CIMENTO_OK"};
+Transition T24{"T24_LEVANTAR_RETRO"};
+Transition T25{"T25_CIMENTO_ROBO"};
+Transition T26{"T26_TRANSPORTE"};
+Transition T35{"T35_POSICIONAR"};
+
+// Função 2
+Transition T42{"T42_INICIO_NIVEL"};
+Transition T43{"T43_FRENTE"};
+Transition T44{"T44_RETRO_ABAIX"};
+Transition T45{"T45_TRAS"};
+Transition T46{"T46_CONCLUI"};
+Transition T47{"T47_LEVANTAR"};
+
+// Função 3
+Transition T50{"T50_DESC_ENTULHO"};
+Transition T51{"T51_RETRO_LEV"};
+Transition T52{"T52_FRENTE"};
+Transition T53{"T53_DESCARREGA"};
+Transition T54{"T54_ENTULHO_ROBO"};
+Transition T55{"T55_DESC_EM_D"};
+Transition T56{"T56_CAIXA_ENT"};
+Transition T57{"T57_CAIXA_CHEIA"};
+Transition T58{"T58_ESPERA"};
+Transition T59{"T59_CAIXA_VAZIA"};
+Transition T60{"T60_DESCARREGAR"};
+Transition T61{"T61_RETRO_ABAIX"};
+Transition T62{"T62_ENTULHO_DESC"};
+Transition T63{"T63_FIM"};
+Transition T66{"T66_RETORNO"};
+
+// ========================
+// CONEXÕES (ARCOS)
+// ========================
+void connectTransitions() {
+
+    // Verificação
+    T13.input={&P14}; T13.output={&P15};
+    T15.input={&P15}; T15.output={&P17};
+    T14.input={&P15}; T14.output={&P16};
+    T16.input={&P16}; T16.output={&P18};
+    T17.input={&P18}; T17.output={&P17};
+
+    // Função 1
+    T21.input={&P21}; T21.output={&P22,&P23};
+    T22.input={&P22}; T22.output={&P24};
+    T23.input={&P23}; T23.output={&P25};
+    T24.input={&P24}; T24.output={&P26};
+    T25.input={&P25}; T25.output={&P27};
+    T26.input={&P27}; T26.output={&P28};
+    T35.input={&P28}; T35.output={&P29};
+
+    // Função 2
+    T42.input={&P29}; T42.output={&P40};
+    T43.input={&P40}; T43.output={&P43};
+    T44.input={&P43}; T44.output={&P42};
+    T45.input={&P42}; T45.output={&P44};
+    T46.input={&P44}; T46.output={&P45};
+    T47.input={&P45}; T47.output={&P46};
+
+    // Função 3
+    T50.input={&P33}; T50.output={&P51};
+    T51.input={&P51}; T51.output={&P49};
+    T52.input={&P49}; T52.output={&P48};
+    T53.input={&P48}; T53.output={&P50};
+    T54.input={&P50}; T54.output={&P52};
+    T55.input={&P52}; T55.output={&P53};
+    T56.input={&P53}; T56.output={&P54};
+    T57.input={&P54}; T57.output={&P55};
+    T58.input={&P55}; T58.output={&P56};
+    T59.input={&P56}; T59.output={&P33};
+    T60.input={&P52}; T60.output={&P57};
+    T61.input={&P57}; T61.output={&P58};
+    T62.input={&P58}; T62.output={&P59};
+    T63.input={&P59}; T63.output={};
+    T66.input={&P33}; T66.output={&P14};
+}
+
+// ========================
+// SIMULAÇÃO
+// ========================
+int main() {
+
+    connectTransitions();
+
+    std::vector<Transition*> transitions = {
+        &T13,&T14,&T15,&T16,&T17,
+        &T21,&T22,&T23,&T24,&T25,&T26,&T35,
+        &T42,&T43,&T44,&T45,&T46,&T47,
+        &T50,&T51,&T52,&T53,&T54,&T55,&T56,
+        &T57,&T58,&T59,&T60,&T61,&T62,&T63,&T66
+    };
+
+    std::cout << "=== SIMULACAO REDE DE PETRI ===\n";
+
+    for (int step = 0; step < 30; step++) {
+        for (auto t : transitions)
+            if (t->enabled())
+                t->fire();
+    }
+
+    std::cout << "\n=== FIM DA SIMULACAO ===\n";
+    return 0;
+}
