@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "RELATÓRIO DO PROJETO MODELAGEM ROBÓTICA E REDES DE PETRI\n";
+    cout << "APLICADAS A UM CANTEIRO DE OBRAS\n\n";
+
+    cout << "DEPARTAMENTO DE CIÊNCIAS EXATAS\n";
+    cout << "CURSO ENGENHARIA DE PRODUÇÃO CIVIL\n\n";
+
+    cout << "Discentes: Amanda Lemos, Júlia Nunes, Luana Bastos e Maria Luiza Cunha\n";
+    cout << "Docente: Robson Marinho\n";
+    cout << "Disciplina: Computação Aplicada à Engenharia\n\n";
+
+    cout << "Salvador - BA, 2025\n\n";
+
+    cout << "INTRODUÇÃO\n";
+    cout << "Este relatório apresenta o desenvolvimento de um sistema baseado em robôs Otto\n";
+    cout << "aplicados a um canteiro de obras em maquete, utilizando Redes de Petri,\n";
+    cout << "ferramentas de modelagem e simulação.\n\n";
+
+    cout << "OBJETIVO DO TRABALHO\n";
+    cout << "Aplicar conceitos de Redes de Petri no desenvolvimento e análise de um sistema robótico\n";
+    cout << "voltado à Engenharia Civil.\n\n";
+
+    cout << "MODELAGEM DO ROBÔ OTTO NINJA\n";
+    cout << "O Fusion 360 foi utilizado para compreender a estrutura e limitações do robô,\n";
+    cout << "permitindo adaptações funcionais e estruturais.\n\n";
+
+    cout << "REDES DE PETRI LUGAR/TRANSIÇÃO\n";
+    cout << "A modelagem em RPLT permitiu representar estados, transições e condições do sistema,\n";
+    cout << "facilitando a análise de bloqueios e sequências válidas.\n\n";
+
+    cout << "REDE DE PETRI COLORIDA\n";
+    cout << "A RPC possibilitou uma representação mais compacta, utilizando tokens coloridos\n";
+    cout << "para identificar tipos de materiais e ações do robô.\n\n";
+
+    cout << "CONCLUSÃO\n";
+    cout << "O projeto evidenciou a importância das Redes de Petri na modelagem de sistemas reais,\n";
+    cout << "permitindo análise, validação e melhorias contínuas.\n";
+
+    return 0;
+}
