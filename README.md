@@ -14,17 +14,17 @@ Integrar conceitos de robótica, sistemas a eventos discretos, modelagem 3D e pl
 
 Disponibilizar um material completo e reutilizável, permitindo que outros estudantes ou pesquisadores possam replicar, adaptar e evoluir o protótipo.
 
-**Conteúdo do Repositório**
+##Conteúdo do Repositório
 
 O repositório contém:
 
---> *Protótipo do Robô Otto Ninja:*
+**-->** *Protótipo do Robô Otto Ninja:*
 
 Estrutura e concepção do robô baseada na plataforma Otto Ninja;
 
 Adaptações mecânicas e funcionais para simular movimentos e tarefas relacionadas a uma retroescavadeira.
 
---> *Redes de Petri*
+**-->** *Redes de Petri*
 
 Modelos desenvolvidos em:
 
@@ -42,7 +42,7 @@ Simulações validadas do comportamento do robô;
 
 Utilização das redes de Petri para modelar a lógica de controle, sequência de operações e estados do sistema.
 
---> *Modelagem 3D – Fusion 360*
+**-->** *Modelagem 3D – Fusion 360*
 
 Arquivos de modelagem 3D desenvolvidos no Fusion 360, incluindo:
 
@@ -54,7 +54,7 @@ Peças adaptadas ou projetadas especificamente para o protótipo;
 
 Modelos prontos para visualização, edição e impressão 3D, quando aplicável.
 
---> *Peças e Componentes*
+**-->** *Peças e Componentes*
 
 Relação de todas as peças necessárias para a construção do protótipo, incluindo:
 
@@ -66,7 +66,7 @@ Elementos eletrônicos utilizados;
 
 Organização dos arquivos de forma a facilitar a replicação do projeto físico.
 
---> *Documentação Técnica*
+**-->** *Documentação Técnica*
 
 Relatório completo do trabalho, contendo:
 
