@@ -14,7 +14,7 @@ Integrar conceitos de robótica, sistemas a eventos discretos, modelagem 3D e pl
 
 Disponibilizar um material completo e reutilizável, permitindo que outros estudantes ou pesquisadores possam replicar, adaptar e evoluir o protótipo.
 
-##Conteúdo do Repositório
+**Conteúdo do Repositório**
 
 O repositório contém:
 
