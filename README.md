@@ -72,6 +72,8 @@ Relatório completo do trabalho, contendo:
 
 Fundamentação teórica;
 
+Manual de Construção feito pelo Markdown 
+
 Metodologia;
 
 Desenvolvimento do projeto;
